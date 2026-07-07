@@ -1,22 +1,27 @@
 import sequelize from "../db/connection.js";
 import { DataTypes } from "sequelize";
 
-const SrsTracking = sequelize.define("srs_tracking", {
-    user_id:{
+const UserPerformanceLog = sequelize.define("user_performance_log", {
+    log_id:{
+        autoIncrement: true,
+        primaryKey: true,
         type: DataTypes.INTEGER
+    },
+    user_id:{
+        type: DataTypes.INTEGER,
     },
     problem_id:{
         type: DataTypes.INTEGER
     },
-    next_review_date:{
+    timestamp:{
         type: DataTypes.DATEONLY
     },
-    current_interval_days:{
+    confidence_score:{
         type: DataTypes.INTEGER
     },
-    algorithm_ease_factor:{
+    completion_time:{
         type: DataTypes.INTEGER
     }
 })
 
-export default SrsTracking
+export default UserPerformanceLog
